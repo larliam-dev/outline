@@ -8,7 +8,9 @@ interface StepConfig {
   subtitle: string;
   prompt: string;
   placeholder: string;
+  trap: string;
   hint: string;
+  example: string;
 }
 
 const stepConfigs: StepConfig[] = [
@@ -18,18 +20,26 @@ const stepConfigs: StepConfig[] = [
     subtitle: "Falla u oportunidad",
     prompt: "¿Cuál es la falla u oportunidad que detectaste?",
     placeholder:
-      "Ej: Los equipos de contenido no tienen un proceso claro y cada pieza se hace de forma diferente.",
+      "Ej: Los equipos de contenido no tienen un proceso claro y cada pieza se hace de forma diferente, lo que genera desperdicio y resultados inconsistentes.",
+    trap:
+      "Si tu respuesta empieza con "hacer", "crear" o "lanzar"... estás describiendo una solución, no un problema. Vuelve a la pregunta.",
     hint: "Sé específico. Evita decir "mejorar X" sin explicar qué falla concreta quieres resolver.",
+    example:
+      "Los equipos de redes sociales trabajan muchas horas pero no tienen un marco común para pensar el contenido. Cada semana improvisan, lo que genera ansiedad y piezas sin hilo conductor.",
   },
   {
     id: "data",
     label: "Data",
     subtitle: "Contexto y audiencia",
     prompt:
-      "¿Quiénes son afectados por este problema? ¿Qué sabes de ellos (intereses, consumo, dolores)?",
+      "¿Quiénes son las personas afectadas por este problema? ¿Qué sabes de ellas (intereses, consumo, dolores)?",
     placeholder:
       "Ej: Líderes de contenido de medianas empresas. Consumen newsletters de marketing, siguen referentes en LinkedIn. Les frustra la falta de estructura.",
-    hint: "Recuerda: intereses > demografía. No te quedes solo con "25-35 años, Colombia".",
+    trap:
+      "Si solo escribiste edad, género o país, tienes demografía, no data. ¿Qué consumen a diario? ¿Qué les preocupa?",
+    hint: "Recuerda: intereses > demografía. No te quedes con "25-35 años, Colombia".",
+    example:
+      "Coordinadores de contenido de empresas medianas (10-50 personas). Consumen The Hustle, referentes de LinkedIn marketing. Buscan validación de su trabajo. Les preocupa no tener impacto visible.",
   },
   {
     id: "tension",
@@ -39,7 +49,11 @@ const stepConfigs: StepConfig[] = [
       "¿Cuál es el dolor o la frustración central que vive tu audiencia en relación al problema?",
     placeholder:
       "Ej: Sienten que producen mucho pero publican sin norte, lo que les genera ansiedad y sensación de no avanzar.",
-    hint: "La tensión es emocional. No es el problema en sí, sino cómo lo vive la persona. ¿Qué le duele, qué le genera alivio, qué le genera orgullo?",
+    trap:
+      "Si tu tensión suena racional ("no tienen información suficiente"), profundiza: ¿cómo los hace sentir eso? ¿Frustración? ¿Miedo? ¿Vergüenza?",
+    hint: "La tensión es emocional. ¿Qué les duele, qué les genera alivio, qué les da orgullo?",
+    example:
+      "Sienten que trabajan mucho y producen poco impacto. Les da vergüenza no poder explicar por qué hicieron una pieza. Quieren sentir que su trabajo tiene sentido y dirección.",
   },
   {
     id: "insight",
@@ -49,27 +63,38 @@ const stepConfigs: StepConfig[] = [
       "¿Cuál es la verdad no obvia sobre tu audiencia que abre la puerta a una solución?",
     placeholder:
       "Ej: Los equipos no necesitan más herramientas, necesitan un lenguaje común para pensar el contenido.",
-    hint: 'Un buen insight empieza con algo no obvio. Si cualquiera lo diría sin pensar, profundiza más. Prueba la frase: "Parece que X, pero en realidad Y."',
+    trap:
+      "Si cualquiera lo diría sin pensarlo, no es un insight. Prueba la frase: "Parece que X, pero en realidad Y."",
+    hint: "Un buen insight es incómodo porque dice algo que todos intuyen pero nadie se atreve a decir.",
+    example:
+      "Parece que el problema es falta de tiempo, pero en realidad es falta de un proceso. Con el mismo tiempo y un marco claro, producirían el doble con la mitad de angustia.",
   },
   {
     id: "idea",
     label: "Idea",
     subtitle: "Solución creativa",
-    prompt:
-      "¿Qué solución creativa propones a partir del insight?",
+    prompt: "¿Qué solución creativa propones a partir del insight?",
     placeholder:
       "Ej: Una guía práctica que enseña el proceso de 8 pasos con ejemplos reales, para que el equipo hable el mismo idioma.",
-    hint: "La idea debe resolver directamente la tensión. Si no hay conexión emocional, revisa el insight.",
+    trap:
+      "¿Tu idea resuelve directamente la tensión del paso anterior? Si no hay conexión emocional, revisa.",
+    hint: "La idea debe hacer sentir alivio, orgullo o pertenencia — no solo dar información.",
+    example:
+      "Un simulador interactivo donde el equipo aplica los 8 pasos a un proyecto real antes de producir. No es teoría — es práctica guiada que genera confianza y lenguaje compartido.",
   },
   {
     id: "contenido",
     label: "Contenido",
     subtitle: "Piezas concretas",
     prompt:
-      "¿Qué piezas de contenido concretas vas a producir para materializar la idea?",
+      "¿Qué piezas concretas vas a producir para materializar la idea?",
     placeholder:
       "Ej: 1 guía descargable PDF, 8 posts de LinkedIn explicando cada paso, 1 webinar introductorio.",
+    trap:
+      "Evita "hacer contenido de valor". Define formato exacto (video, artículo, post), canal y cantidad.",
     hint: "Sé concreto: formato, canal, cantidad. El contenido es la manifestación tangible de tu idea.",
+    example:
+      "1 herramienta web interactiva con los 8 pasos. 6 posts de LinkedIn con ejemplos de cada principio. 1 sesión de taller de 90 min con el equipo. 1 plantilla descargable para usar en proyectos.",
   },
   {
     id: "distribucion",
@@ -79,7 +104,11 @@ const stepConfigs: StepConfig[] = [
       "¿Cómo vas a hacer llegar el contenido a tu audiencia? ¿Por qué canales y con qué estrategia?",
     placeholder:
       "Ej: LinkedIn orgánico + newsletter a base existente + alianza con 2 referentes del sector para difusión.",
-    hint: "El mejor contenido sin distribución no existe. Define al menos 2-3 puntos de contacto.",
+    trap:
+      "Publicar no es distribuir. ¿Qué vas a hacer activamente para que llegue? Sin distribución, el mejor contenido no existe.",
+    hint: "Define al menos 2-3 puntos de contacto activos con tu audiencia.",
+    example:
+      "LinkedIn orgánico (3 posts/semana por 2 semanas). Email a base de 500 suscriptores. Alianza con 2 comunidades de comunicadores para compartir la herramienta. DMs directos a 20 contactos clave.",
   },
   {
     id: "aprendizaje",
@@ -88,24 +117,26 @@ const stepConfigs: StepConfig[] = [
     prompt:
       "¿Cómo vas a medir el éxito? ¿Qué señales te indicarán que debes ajustar?",
     placeholder:
-      "Ej: Miro descargas de la guía, comentarios en LinkedIn y respuestas al newsletter en la primera semana. Si la tasa de apertura cae, cambio el asunto.",
-    hint: "No esperes el reporte mensual. Define métricas rápidas que te permitan ajustar en días, no en meses.",
+      "Ej: Reviso descargas, comentarios en LinkedIn y respuestas al newsletter en la primera semana. Si la tasa de apertura cae, cambio el asunto.",
+    trap:
+      "Si tu métrica es "alcance" o "impresiones", es muy lenta. ¿Qué puedes medir en los primeros 3 días?",
+    hint: "No esperes el reporte mensual. Define métricas que puedas revisar en días, no en meses.",
+    example:
+      "A las 72h reviso: clicks al simulador, comentarios en LinkedIn y respuestas al email. Si el CTR del email es menor al 3%, cambio el asunto. Si los comentarios son genéricos, ajusto el copy de los posts.",
   },
 ];
 
-interface SimulatorState {
-  answers: Record<string, string>;
-}
-
 /**
  * Step-by-step project simulator that guides the user through applying
- * the Social Methodology process to a real project.
+ * the Social Methodology process to a real project. Each step includes
+ * a trap warning and a collapsible example answer for reference.
  */
 export function ProjectSimulator(): React.ReactElement {
   const [currentStep, setCurrentStep] = React.useState(0);
   const [answers, setAnswers] = React.useState<Record<string, string>>({});
   const [finished, setFinished] = React.useState(false);
   const [copied, setCopied] = React.useState(false);
+  const [showExample, setShowExample] = React.useState(false);
 
   const step = stepConfigs[currentStep];
   const currentAnswer = answers[step?.id] ?? "";
@@ -123,17 +154,24 @@ export function ProjectSimulator(): React.ReactElement {
       setFinished(true);
     } else {
       setCurrentStep((prev) => prev + 1);
+      setShowExample(false);
     }
   }, [isLast]);
 
   const handleBack = React.useCallback(() => {
     setCurrentStep((prev) => Math.max(0, prev - 1));
+    setShowExample(false);
   }, []);
 
   const handleRestart = React.useCallback(() => {
     setAnswers({});
     setCurrentStep(0);
     setFinished(false);
+    setShowExample(false);
+  }, []);
+
+  const handleToggleExample = React.useCallback(() => {
+    setShowExample((prev) => !prev);
   }, []);
 
   const buildExportText = React.useCallback((): string => {
@@ -142,9 +180,9 @@ export function ProjectSimulator(): React.ReactElement {
       "=".repeat(42),
       "",
     ];
-    for (const s of stepConfigs) {
-      lines.push(`[${s.label.toUpperCase()}] ${s.subtitle}`);
-      lines.push(answers[s.id] || "(sin respuesta)");
+    for (const sc of stepConfigs) {
+      lines.push(`[${sc.label.toUpperCase()}] ${sc.subtitle}`);
+      lines.push(answers[sc.id] || "(sin respuesta)");
       lines.push("");
     }
     return lines.join("\n");
@@ -173,15 +211,16 @@ export function ProjectSimulator(): React.ReactElement {
         <FinishHeader>Tu proyecto resumido</FinishHeader>
         <FinishSubtitle>
           Aquí tienes el resumen de tu proyecto aplicando la Metodología Social.
+          Ahora vuelve al Problema con lo que aprendas.
         </FinishSubtitle>
-        {stepConfigs.map((s) => (
-          <SummaryItem key={s.id}>
+        {stepConfigs.map((sc) => (
+          <SummaryItem key={sc.id}>
             <SummaryLabel>
-              <SummaryBadge>{s.label}</SummaryBadge>
-              {s.subtitle}
+              <SummaryBadge>{sc.label}</SummaryBadge>
+              {sc.subtitle}
             </SummaryLabel>
             <SummaryAnswer>
-              {answers[s.id] || <em>Sin respuesta</em>}
+              {answers[sc.id] || <em>Sin respuesta</em>}
             </SummaryAnswer>
           </SummaryItem>
         ))}
@@ -189,9 +228,7 @@ export function ProjectSimulator(): React.ReactElement {
           <ExportButton onClick={handleCopy}>
             {copied ? "✓ Copiado" : "Copiar al portapapeles"}
           </ExportButton>
-          <ExportButton onClick={handleDownload}>
-            Descargar .txt
-          </ExportButton>
+          <ExportButton onClick={handleDownload}>Descargar .txt</ExportButton>
           <RestartButton onClick={handleRestart}>
             Empezar un nuevo proyecto
           </RestartButton>
@@ -215,6 +252,10 @@ export function ProjectSimulator(): React.ReactElement {
         />
       </ProgressBar>
       <StepPrompt>{step.prompt}</StepPrompt>
+      <TrapBox>
+        <TrapLabel>⚠ Trampa común</TrapLabel>
+        {step.trap}
+      </TrapBox>
       <StepTextarea
         value={currentAnswer}
         onChange={handleAnswerChange}
@@ -223,6 +264,13 @@ export function ProjectSimulator(): React.ReactElement {
         aria-label={step.prompt}
       />
       <HintBox>{step.hint}</HintBox>
+      <ExampleToggle
+        onClick={handleToggleExample}
+        aria-expanded={showExample}
+      >
+        {showExample ? "Ocultar ejemplo ↑" : "Ver un ejemplo de referencia ↓"}
+      </ExampleToggle>
+      {showExample && <ExampleBox>{step.example}</ExampleBox>}
       <Actions>
         {currentStep > 0 && (
           <BackButton onClick={handleBack}>← Volver</BackButton>
@@ -234,10 +282,10 @@ export function ProjectSimulator(): React.ReactElement {
       {currentStep > 0 && (
         <PreviousAnswers>
           <PreviousTitle>Lo que llevas hasta aquí:</PreviousTitle>
-          {stepConfigs.slice(0, currentStep).map((s) => (
-            <PreviousItem key={s.id}>
-              <PreviousLabel>{s.label}:</PreviousLabel>
-              {answers[s.id] || "—"}
+          {stepConfigs.slice(0, currentStep).map((sc) => (
+            <PreviousItem key={sc.id}>
+              <PreviousLabel>{sc.label}:</PreviousLabel>
+              {answers[sc.id] || "—"}
             </PreviousItem>
           ))}
         </PreviousAnswers>
@@ -304,6 +352,25 @@ const StepPrompt = styled.h3`
   line-height: 1.5;
 `;
 
+const TrapBox = styled.div`
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #f9731611;
+  border-left: 3px solid #f97316;
+  font-size: 13px;
+  color: ${s("textSecondary")};
+  line-height: 1.5;
+`;
+
+const TrapLabel = styled.div`
+  font-weight: 700;
+  font-size: 11px;
+  color: #f97316;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+`;
+
 const StepTextarea = styled.textarea`
   width: 100%;
   padding: 12px 14px;
@@ -336,6 +403,38 @@ const HintBox = styled.div`
   font-size: 13px;
   color: ${s("textSecondary")};
   line-height: 1.5;
+`;
+
+const ExampleToggle = styled.button`
+  align-self: flex-start;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+  color: ${s("accent")};
+  cursor: var(--pointer);
+  font-weight: 500;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${s("accent")};
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+`;
+
+const ExampleBox = styled.div`
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: ${s("backgroundSecondary")};
+  border: 1.5px dashed ${s("divider")};
+  font-size: 13px;
+  color: ${s("textSecondary")};
+  line-height: 1.6;
+  font-style: italic;
 `;
 
 const Actions = styled.div`
@@ -425,6 +524,7 @@ const FinishSubtitle = styled.p`
   font-size: 14px;
   color: ${s("textSecondary")};
   margin: 0;
+  line-height: 1.6;
 `;
 
 const SummaryItem = styled.div`

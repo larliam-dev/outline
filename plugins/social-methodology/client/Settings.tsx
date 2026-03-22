@@ -6,18 +6,18 @@ import Tabs from "~/components/Tabs";
 import { PrinciplesCards } from "./components/PrinciplesCards";
 import { ProcessDiagram } from "./components/ProcessDiagram";
 import { ProjectSimulator } from "./components/ProjectSimulator";
-import { Quiz } from "./components/Quiz";
+import { Autodiagnostico } from "./components/Quiz";
 import Icon from "./Icon";
 
-type TabId = "principios" | "proceso" | "quiz" | "simulador";
+type TabId = "simulador" | "principios" | "proceso" | "diagnostico";
 
 /**
  * Settings panel for the Social Methodology learning plugin.
- * Provides four interactive sections: principles, process diagram, quiz,
- * and project simulator.
+ * Tabs ordered to lead with doing (Simulador) before reading (Principios, Proceso).
+ * The Quiz has been replaced by a self-assessment Autodiagnóstico.
  */
 function SocialMethodologySettings(): React.ReactElement {
-  const [activeTab, setActiveTab] = React.useState<TabId>("principios");
+  const [activeTab, setActiveTab] = React.useState<TabId>("simulador");
 
   const handleTabChange = React.useCallback(
     (tab: TabId) => () => setActiveTab(tab),
@@ -28,6 +28,12 @@ function SocialMethodologySettings(): React.ReactElement {
     <IntegrationScene title="Metodología Social" icon={<Icon />}>
       <Heading>Metodología Social</Heading>
       <Tabs>
+        <Tab
+          onClick={handleTabChange("simulador")}
+          active={activeTab === "simulador"}
+        >
+          Simulador
+        </Tab>
         <Tab
           onClick={handleTabChange("principios")}
           active={activeTab === "principios"}
@@ -40,20 +46,17 @@ function SocialMethodologySettings(): React.ReactElement {
         >
           Proceso
         </Tab>
-        <Tab onClick={handleTabChange("quiz")} active={activeTab === "quiz"}>
-          Quiz
-        </Tab>
         <Tab
-          onClick={handleTabChange("simulador")}
-          active={activeTab === "simulador"}
+          onClick={handleTabChange("diagnostico")}
+          active={activeTab === "diagnostico"}
         >
-          Simulador
+          Autodiagnóstico
         </Tab>
       </Tabs>
+      {activeTab === "simulador" && <ProjectSimulator />}
       {activeTab === "principios" && <PrinciplesCards />}
       {activeTab === "proceso" && <ProcessDiagram />}
-      {activeTab === "quiz" && <Quiz />}
-      {activeTab === "simulador" && <ProjectSimulator />}
+      {activeTab === "diagnostico" && <Autodiagnostico />}
     </IntegrationScene>
   );
 }
