@@ -105,6 +105,7 @@ export function ProjectSimulator(): React.ReactElement {
   const [currentStep, setCurrentStep] = React.useState(0);
   const [answers, setAnswers] = React.useState<Record<string, string>>({});
   const [finished, setFinished] = React.useState(false);
+  const [copied, setCopied] = React.useState(false);
 
   const step = stepConfigs[currentStep];
   const currentAnswer = answers[step?.id] ?? "";
@@ -135,6 +136,37 @@ export function ProjectSimulator(): React.ReactElement {
     setFinished(false);
   }, []);
 
+  const buildExportText = React.useCallback((): string => {
+    const lines: string[] = [
+      "METODOLOGÍA SOCIAL – RESUMEN DE PROYECTO",
+      "=".repeat(42),
+      "",
+    ];
+    for (const s of stepConfigs) {
+      lines.push(`[${s.label.toUpperCase()}] ${s.subtitle}`);
+      lines.push(answers[s.id] || "(sin respuesta)");
+      lines.push("");
+    }
+    return lines.join("\n");
+  }, [answers]);
+
+  const handleCopy = React.useCallback(async () => {
+    await navigator.clipboard.writeText(buildExportText());
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }, [buildExportText]);
+
+  const handleDownload = React.useCallback(() => {
+    const text = buildExportText();
+    const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "metodologia-social-proyecto.txt";
+    a.click();
+    URL.revokeObjectURL(url);
+  }, [buildExportText]);
+
   if (finished) {
     return (
       <Container>
@@ -153,7 +185,17 @@ export function ProjectSimulator(): React.ReactElement {
             </SummaryAnswer>
           </SummaryItem>
         ))}
-        <RestartButton onClick={handleRestart}>Empezar un nuevo proyecto</RestartButton>
+        <ExportActions>
+          <ExportButton onClick={handleCopy}>
+            {copied ? "✓ Copiado" : "Copiar al portapapeles"}
+          </ExportButton>
+          <ExportButton onClick={handleDownload}>
+            Descargar .txt
+          </ExportButton>
+          <RestartButton onClick={handleRestart}>
+            Empezar un nuevo proyecto
+          </RestartButton>
+        </ExportActions>
       </Container>
     );
   }
@@ -418,8 +460,30 @@ const SummaryAnswer = styled.p`
   line-height: 1.6;
 `;
 
+const ExportActions = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+`;
+
+const ExportButton = styled.button`
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  background: ${s("accent")};
+  color: ${s("accentText")};
+  font-size: 14px;
+  font-weight: 600;
+  cursor: var(--pointer);
+  transition: opacity 150ms ease;
+
+  &:hover {
+    opacity: 0.85;
+  }
+`;
+
 const RestartButton = styled.button`
-  align-self: flex-start;
   padding: 10px 20px;
   border-radius: 8px;
   border: 1.5px solid ${s("divider")};
