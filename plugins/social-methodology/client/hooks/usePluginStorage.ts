@@ -48,3 +48,21 @@ export function usePluginStorage<T>(
 
   return [state, setAndPersist];
 }
+
+/**
+ * Removes all plugin storage keys from localStorage.
+ * After calling this, components using usePluginStorage will reinitialize
+ * to their default values on next mount.
+ */
+export function clearPluginStorage(): void {
+  const keysToRemove: string[] = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key?.startsWith(NAMESPACE)) {
+      keysToRemove.push(key);
+    }
+  }
+  for (const key of keysToRemove) {
+    localStorage.removeItem(key);
+  }
+}
