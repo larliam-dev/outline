@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { s } from "@shared/styles";
+import { usePluginStorage } from "../hooks/usePluginStorage";
 
 interface Principle {
   id: string;
@@ -86,8 +87,11 @@ function scoreColor(score: number): string {
  * and receive personalized recommendations focused on their weakest areas.
  */
 export function Autodiagnostico(): React.ReactElement {
-  const [scores, setScores] = React.useState<Record<string, number>>({});
-  const [submitted, setSubmitted] = React.useState(false);
+  const [scores, setScores] = usePluginStorage<Record<string, number>>(
+    "quiz_scores",
+    {}
+  );
+  const [submitted, setSubmitted] = usePluginStorage("quiz_submitted", false);
 
   const allAnswered = principles.every((p) => scores[p.id] !== undefined);
 

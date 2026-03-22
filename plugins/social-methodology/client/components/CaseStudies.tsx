@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { s } from "@shared/styles";
+import { usePluginStorage } from "../hooks/usePluginStorage";
 
 const PROCESS_STEPS = [
   "Problema",
@@ -98,9 +99,9 @@ interface CaseState {
  */
 export function CaseStudies(): React.ReactElement {
   const [activeCase, setActiveCase] = React.useState<string | null>(null);
-  const [caseStates, setCaseStates] = React.useState<
+  const [caseStates, setCaseStates] = usePluginStorage<
     Record<string, CaseState>
-  >({});
+  >("case_states", {});
 
   const handleSelectCase = React.useCallback((id: string) => {
     setActiveCase(id);

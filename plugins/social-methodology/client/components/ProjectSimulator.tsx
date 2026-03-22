@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { s } from "@shared/styles";
+import { usePluginStorage } from "../hooks/usePluginStorage";
 
 interface StepConfig {
   id: string;
@@ -132,9 +133,12 @@ const stepConfigs: StepConfig[] = [
  * a trap warning and a collapsible example answer for reference.
  */
 export function ProjectSimulator(): React.ReactElement {
-  const [currentStep, setCurrentStep] = React.useState(0);
-  const [answers, setAnswers] = React.useState<Record<string, string>>({});
-  const [finished, setFinished] = React.useState(false);
+  const [currentStep, setCurrentStep] = usePluginStorage("simulator_step", 0);
+  const [answers, setAnswers] = usePluginStorage<Record<string, string>>(
+    "simulator_answers",
+    {}
+  );
+  const [finished, setFinished] = usePluginStorage("simulator_finished", false);
   const [copied, setCopied] = React.useState(false);
   const [showExample, setShowExample] = React.useState(false);
 
