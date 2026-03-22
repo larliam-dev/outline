@@ -3,18 +3,18 @@ import { IntegrationScene } from "~/scenes/Settings/components/IntegrationScene"
 import Heading from "~/components/Heading";
 import Tab from "~/components/Tab";
 import Tabs from "~/components/Tabs";
+import { CaseStudies } from "./components/CaseStudies";
 import { PrinciplesCards } from "./components/PrinciplesCards";
 import { ProcessDiagram } from "./components/ProcessDiagram";
 import { ProjectSimulator } from "./components/ProjectSimulator";
 import { Autodiagnostico } from "./components/Quiz";
 import Icon from "./Icon";
 
-type TabId = "simulador" | "principios" | "proceso" | "diagnostico";
+type TabId = "simulador" | "casos" | "principios" | "proceso" | "diagnostico";
 
 /**
  * Settings panel for the Social Methodology learning plugin.
- * Tabs ordered to lead with doing (Simulador) before reading (Principios, Proceso).
- * The Quiz has been replaced by a self-assessment Autodiagnóstico.
+ * Tab order: Simulador (do) → Casos (analyze) → Principios → Proceso → Autodiagnóstico.
  */
 function SocialMethodologySettings(): React.ReactElement {
   const [activeTab, setActiveTab] = React.useState<TabId>("simulador");
@@ -33,6 +33,12 @@ function SocialMethodologySettings(): React.ReactElement {
           active={activeTab === "simulador"}
         >
           Simulador
+        </Tab>
+        <Tab
+          onClick={handleTabChange("casos")}
+          active={activeTab === "casos"}
+        >
+          Casos
         </Tab>
         <Tab
           onClick={handleTabChange("principios")}
@@ -54,6 +60,7 @@ function SocialMethodologySettings(): React.ReactElement {
         </Tab>
       </Tabs>
       {activeTab === "simulador" && <ProjectSimulator />}
+      {activeTab === "casos" && <CaseStudies />}
       {activeTab === "principios" && <PrinciplesCards />}
       {activeTab === "proceso" && <ProcessDiagram />}
       {activeTab === "diagnostico" && <Autodiagnostico />}
