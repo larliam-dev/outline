@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { s } from "@shared/styles";
 import { usePluginStorage } from "../hooks/usePluginStorage";
+import { trackEvent } from "../utils/trackEvent";
 
 interface StepConfig {
   id: string;
@@ -146,6 +147,13 @@ export function ProjectSimulator(): React.ReactElement {
   const currentAnswer = answers[step?.id] ?? "";
   const isLast = currentStep === stepConfigs.length - 1;
 
+  React.useEffect(() => {
+    if (currentStep === 0 && !finished) {
+      trackEvent("simulator.step", { step: stepConfigs[0].id, stepIndex: 0 });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handleAnswerChange = React.useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       setAnswers((prev) => ({ ...prev, [step.id]: e.target.value }));
@@ -155,12 +163,18 @@ export function ProjectSimulator(): React.ReactElement {
 
   const handleNext = React.useCallback(() => {
     if (isLast) {
+      trackEvent("simulator.complete");
       setFinished(true);
     } else {
-      setCurrentStep((prev) => prev + 1);
+      const nextIndex = currentStep + 1;
+      trackEvent("simulator.step", {
+        step: stepConfigs[nextIndex].id,
+        stepIndex: nextIndex,
+      });
+      setCurrentStep(nextIndex);
       setShowExample(false);
     }
-  }, [isLast]);
+  }, [isLast, currentStep]);
 
   const handleBack = React.useCallback(() => {
     setCurrentStep((prev) => Math.max(0, prev - 1));
@@ -172,6 +186,7 @@ export function ProjectSimulator(): React.ReactElement {
     setCurrentStep(0);
     setFinished(false);
     setShowExample(false);
+    trackEvent("simulator.step", { step: stepConfigs[0].id, stepIndex: 0 });
   }, []);
 
   const handleToggleExample = React.useCallback(() => {

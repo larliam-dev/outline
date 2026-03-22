@@ -20,6 +20,8 @@ export { default as Event } from "./Event";
 
 export { default as FileOperation } from "./FileOperation";
 
+export { default as PluginMethodologyEvent } from "./PluginMethodologyEvent";
+
 export { default as Group } from "./Group";
 
 export { default as GroupUser } from "./GroupUser";

@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { s } from "@shared/styles";
 import { usePluginStorage } from "../hooks/usePluginStorage";
+import { trackEvent } from "../utils/trackEvent";
 
 const PROCESS_STEPS = [
   "Problema",
@@ -141,15 +142,29 @@ export function CaseStudies(): React.ReactElement {
     []
   );
 
-  const handleSubmit = React.useCallback((caseId: string) => {
-    setCaseStates((prev) => ({
-      ...prev,
-      [caseId]: {
-        ...prev[caseId],
-        submitted: true,
-      },
-    }));
-  }, []);
+  const handleSubmit = React.useCallback(
+    (caseId: string) => {
+      setCaseStates((prev) => {
+        const state = prev[caseId];
+        const c = cases.find((x) => x.id === caseId);
+        if (state && c) {
+          const correct =
+            state.selectedStep !== null &&
+            c.failedSteps.includes(state.selectedStep);
+          trackEvent("case.submit", {
+            caseId,
+            selectedStep: state.selectedStep,
+            correct,
+          });
+        }
+        return {
+          ...prev,
+          [caseId]: { ...state, submitted: true },
+        };
+      });
+    },
+    []
+  );
 
   if (activeCase) {
     const c = cases.find((x) => x.id === activeCase);

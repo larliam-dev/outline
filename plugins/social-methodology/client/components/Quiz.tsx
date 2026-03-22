@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { s } from "@shared/styles";
 import { usePluginStorage } from "../hooks/usePluginStorage";
+import { trackEvent } from "../utils/trackEvent";
 
 interface Principle {
   id: string;
@@ -100,8 +101,9 @@ export function Autodiagnostico(): React.ReactElement {
   }, []);
 
   const handleSubmit = React.useCallback(() => {
+    trackEvent("quiz.submit", { scores });
     setSubmitted(true);
-  }, []);
+  }, [scores]);
 
   const handleRestart = React.useCallback(() => {
     setScores({});

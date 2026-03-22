@@ -5,6 +5,8 @@ import Heading from "~/components/Heading";
 import Tab from "~/components/Tab";
 import Tabs from "~/components/Tabs";
 import { s } from "@shared/styles";
+import useCurrentUser from "~/hooks/useCurrentUser";
+import { AnalyticsStats } from "./components/AnalyticsStats";
 import { CaseStudies } from "./components/CaseStudies";
 import { PrinciplesCards } from "./components/PrinciplesCards";
 import { ProcessDiagram } from "./components/ProcessDiagram";
@@ -13,14 +15,22 @@ import { Autodiagnostico } from "./components/Quiz";
 import { clearPluginStorage } from "./hooks/usePluginStorage";
 import Icon from "./Icon";
 
-type TabId = "simulador" | "casos" | "principios" | "proceso" | "diagnostico";
+type TabId =
+  | "simulador"
+  | "casos"
+  | "principios"
+  | "proceso"
+  | "diagnostico"
+  | "estadisticas";
 
 /**
  * Settings panel for the Social Methodology learning plugin.
- * Tab order: Simulador (do) → Casos (analyze) → Principios → Proceso → Autodiagnóstico.
+ * Tab order: Simulador → Casos → Principios → Proceso → Autodiagnóstico.
+ * Admins also see an Estadísticas tab with team-level aggregate analytics.
  * Includes a reset button that clears all persisted learning progress.
  */
 function SocialMethodologySettings(): React.ReactElement {
+  const user = useCurrentUser();
   const [activeTab, setActiveTab] = React.useState<TabId>("simulador");
   const [resetKey, setResetKey] = React.useState(0);
   const [confirming, setConfirming] = React.useState(false);
@@ -90,13 +100,19 @@ function SocialMethodologySettings(): React.ReactElement {
         >
           Autodiagnóstico
         </Tab>
+        {user.isAdmin && (
+          <Tab
+            onClick={handleTabChange("estadisticas")}
+            active={activeTab === "estadisticas"}
+          >
+            Estadísticas
+          </Tab>
+        )}
       </Tabs>
       {activeTab === "simulador" && (
         <ProjectSimulator key={`simulator-${resetKey}`} />
       )}
-      {activeTab === "casos" && (
-        <CaseStudies key={`cases-${resetKey}`} />
-      )}
+      {activeTab === "casos" && <CaseStudies key={`cases-${resetKey}`} />}
       {activeTab === "principios" && (
         <PrinciplesCards key={`principles-${resetKey}`} />
       )}
@@ -106,9 +122,12 @@ function SocialMethodologySettings(): React.ReactElement {
       {activeTab === "diagnostico" && (
         <Autodiagnostico key={`quiz-${resetKey}`} />
       )}
+      {activeTab === "estadisticas" && user.isAdmin && <AnalyticsStats />}
       <Footer>
         <ResetButton $confirming={confirming} onClick={handleResetClick}>
-          {confirming ? "¿Seguro? Haz clic para confirmar" : "Reiniciar progreso"}
+          {confirming
+            ? "¿Seguro? Haz clic para confirmar"
+            : "Reiniciar progreso"}
         </ResetButton>
       </Footer>
     </IntegrationScene>
@@ -130,7 +149,6 @@ const ResetButton = styled.button<{ $confirming: boolean }>`
   border: none;
   padding: 0;
   font-size: 13px;
-  color: ${({ $confirming }) => ($confirming ? "#dc2626" : "")};
   color: ${({ $confirming, theme }) =>
     $confirming ? "#dc2626" : theme.textTertiary};
   cursor: var(--pointer);
