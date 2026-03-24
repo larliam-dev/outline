@@ -10,6 +10,7 @@ PluginManager.add([
     value: {
       group: "Learning",
       icon: Icon,
+      enabled: () => true,
       description:
         "Aprende, practica y aplica la Metodología Social: principios, proceso, quiz y simulador de proyectos.",
       component: createLazyComponent(() => import("./Settings")),
