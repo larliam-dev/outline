@@ -149,7 +149,7 @@ function readErrorFile(): Buffer {
   return (
     errorHtmlCache ??
     (errorHtmlCache = fs.readFileSync(
-      path.join(__dirname, "static/error.dev.html")
+      path.join(__dirname, "error.dev.html")
     ))
   );
 }
