@@ -35,7 +35,7 @@ const cases: CaseStudy[] = [
     preview:
       "Producción impecable, buenos invitados, distribución pagada. 15.000 oyentes en el primer mes. Cero comunidad. Los sponsors no renovaron.",
     story: [
-      "Un equipo de contenido de una revista de negocios decide lanzar un podcast para emprendedores. Tienen data sólida: su audiencia son fundadores de 28 a 42 años, leen libros de management, siguen referentes en LinkedIn y consumen contenido en inglés porque "en español no hay nada bueno".",
+      "Un equipo de contenido de una revista de negocios decide lanzar un podcast para emprendedores. Tienen data sólida: su audiencia son fundadores de 28 a 42 años, leen libros de management, siguen referentes en LinkedIn y consumen contenido en inglés porque \"en español no hay nada bueno\".",
       "El problema está claro: los emprendedores latinoamericanos no tienen acceso a contenido práctico de calidad en su idioma. La solución se ve obvia: entrevistar a founders exitosos y contar sus historias. Diez episodios ya planificados, producción de alta calidad, dos sponsors confirmados.",
       "Lanzan. La distribución es agresiva: LinkedIn orgánico, newsletter, pauta pagada en Spotify. El primer mes: 15.000 oyentes. Los números de descarga son buenos. Pero los comentarios son escasos. Nadie comparte los episodios espontáneamente. El grupo de WhatsApp que crearon para la comunidad tiene 12 personas. Después de tres meses, los sponsors no renuevan.",
     ],
@@ -43,7 +43,7 @@ const cases: CaseStudy[] = [
       "El podcast sigue vivo pero nunca despegó como comunidad. El equipo no entiende por qué: la producción es buena, los invitados son relevantes, la distribución fue fuerte.",
     failedSteps: ["Tensión", "Insight"],
     diagnosis:
-      "El equipo pasó de Data directamente a Idea sin pasar por Tensión ni Insight. Sabían quién era su audiencia demográficamente, pero nunca preguntaron: ¿qué siente un emprendedor latinoamericano cuando enfrenta esta falta de contenido? La respuesta no es "frustración por falta de información" — es soledad y la sensación de estar improvisando mientras todos los demás parecen tenerlo claro. Ese dolor emocional nunca aparece en el podcast porque nadie lo identificó. El resultado es contenido informativo pero no resonante: se escucha, no se comparte.",
+      "El equipo pasó de Data directamente a Idea sin pasar por Tensión ni Insight. Sabían quién era su audiencia demográficamente, pero nunca preguntaron: ¿qué siente un emprendedor latinoamericano cuando enfrenta esta falta de contenido? La respuesta no es \"frustración por falta de información\" — es soledad y la sensación de estar improvisando mientras todos los demás parecen tenerlo claro. Ese dolor emocional nunca aparece en el podcast porque nadie lo identificó. El resultado es contenido informativo pero no resonante: se escucha, no se comparte.",
     lesson:
       "El insight que faltaba: los emprendedores no buscan más información de éxito — buscan validación de que sus fracasos son normales. Un podcast que muestra errores reales, dudas y momentos de quiebre conecta emocionalmente. Uno que solo muestra logros genera admiración pasiva, no comunidad.",
   },
@@ -54,15 +54,15 @@ const cases: CaseStudy[] = [
     preview:
       "Campaña con gran alcance pagado, contenido emotivo, influencers involucrados. Las donaciones casi no se movieron.",
     story: [
-      "Una ONG con 15 años de trabajo en educación rural quiere "levantar conciencia sobre la brecha educativa en zonas alejadas". Tienen estadísticas contundentes: 3 de cada 10 niños en zonas rurales no terminan la primaria. Su audiencia potencial son profesionales urbanos de 25 a 45 años con capacidad de donar.",
-      "El equipo define el problema como: "necesitamos más visibilidad en redes sociales para generar donaciones". Producen una campaña con infografías de impacto, videos testimoniales de niños, y un hashtag. Consiguen que tres influencers medianos la difundan. La pauta publicitaria llega a 2 millones de personas en dos semanas.",
-      "Los resultados de alcance son los mejores en la historia de la organización. Pero las donaciones suben apenas un 4%. En las métricas de redes: muchos "me gusta", pocos comentarios, casi ningún compartido orgánico. La gente ve los videos, pone un corazón, y sigue scrolleando.",
+      "Una ONG con 15 años de trabajo en educación rural quiere \"levantar conciencia sobre la brecha educativa en zonas alejadas\". Tienen estadísticas contundentes: 3 de cada 10 niños en zonas rurales no terminan la primaria. Su audiencia potencial son profesionales urbanos de 25 a 45 años con capacidad de donar.",
+      "El equipo define el problema como: \"necesitamos más visibilidad en redes sociales para generar donaciones\". Producen una campaña con infografías de impacto, videos testimoniales de niños, y un hashtag. Consiguen que tres influencers medianos la difundan. La pauta publicitaria llega a 2 millones de personas en dos semanas.",
+      "Los resultados de alcance son los mejores en la historia de la organización. Pero las donaciones suben apenas un 4%. En las métricas de redes: muchos \"me gusta\", pocos comentarios, casi ningún compartido orgánico. La gente ve los videos, pone un corazón, y sigue scrolleando.",
     ],
     result:
       "La directora de comunicaciones no entiende qué salió mal. El contenido era emotivo, el alcance fue enorme, la causa es urgente. ¿Por qué no donaron?",
     failedSteps: ["Problema", "Tensión"],
     diagnosis:
-      "El "problema" que definieron no era un problema — era una meta de comunicación. "Necesitar más visibilidad" es lo que quiere la organización, no la falla que vive la audiencia. Al no identificar el problema real desde la perspectiva del donante potencial, toda la cadena que sigue quedó torcida. La tensión que generó la campaña fue lástima — pero la lástima paraliza, no activa. La gente siente pena, cierra la app, y sigue con su día con una ligera culpa que se disuelve en minutos.",
+      "El \"problema\" que definieron no era un problema — era una meta de comunicación. \"Necesitar más visibilidad\" es lo que quiere la organización, no la falla que vive la audiencia. Al no identificar el problema real desde la perspectiva del donante potencial, toda la cadena que sigue quedó torcida. La tensión que generó la campaña fue lástima — pero la lástima paraliza, no activa. La gente siente pena, cierra la app, y sigue con su día con una ligera culpa que se disuelve en minutos.",
     lesson:
       "El problema real del donante potencial es la desconexión: no cree que su donación individual cambie algo. La tensión es impotencia mezclada con culpa. El insight: la gente no dona porque no ve el impacto directo de su dinero. La campaña debería mostrar exactamente qué hace $20 por un niño específico, con nombre, escuela y resultado concreto — no estadísticas que abruman sin dar salida.",
   },
@@ -71,19 +71,19 @@ const cases: CaseStudy[] = [
     title: "La serie perfecta que el algoritmo mató",
     team: "Equipo de marketing de una empresa B2B de software",
     preview:
-      "Proceso completo bien ejecutado, 10 episodios producidos antes de lanzar para "ser consistentes". El 80% del público original se fue antes del episodio 8.",
+      "Proceso completo bien ejecutado, 10 episodios producidos antes de lanzar para \"ser consistentes\". El 80% del público original se fue antes del episodio 8.",
     story: [
       "El equipo de marketing de una empresa de software para ventas aplica la metodología completa y correctamente: el problema es que los equipos de ventas pierden horas en reportes manuales. La tensión es real: los lunes por la mañana son un caos de planillas y el gerente de ventas llega a la reunión con números de la semana pasada. El insight es preciso: el problema no es la falta de datos, sino los 20 minutos de estrés del domingo por la noche preparando el reporte.",
-      "La idea es sólida: una serie de LinkedIn llamada "El equipo de ventas a prueba de lunes" — contenido práctico sobre cómo automatizar el caos de los reportes. Planifican 10 episodios, contratan a un editor, y deciden producir todos los episodios antes de lanzar para "garantizar consistencia y no quedarse sin material".",
+      "La idea es sólida: una serie de LinkedIn llamada \"El equipo de ventas a prueba de lunes\" — contenido práctico sobre cómo automatizar el caos de los reportes. Planifican 10 episodios, contratan a un editor, y deciden producir todos los episodios antes de lanzar para \"garantizar consistencia y no quedarse sin material\".",
       "Lanzan el episodio 1. El engagement es el mejor que han tenido: 340 reacciones, 47 comentarios, varios compartidos. En los comentarios, la audiencia pide contenido sobre integraciones con CRM específicos y sobre cómo convencer al equipo de adoptar nuevas herramientas. El equipo lo nota, pero los episodios 2 al 10 ya están producidos sobre otros temas. Los publican igual. El engagement cae episodio a episodio. En el episodio 8, el 80% de los seguidores originales ya no interactúa.",
     ],
     result:
-      "La serie termina con buenos números de producción y malos de negocio. El equipo cree que "LinkedIn ya no funciona" y descarta el formato para el próximo trimestre.",
+      "La serie termina con buenos números de producción y malos de negocio. El equipo cree que \"LinkedIn ya no funciona\" y descarta el formato para el próximo trimestre.",
     failedSteps: ["Aprendizaje"],
     diagnosis:
       "El proceso estuvo bien ejecutado hasta el último paso. El error fue producir todo antes de lanzar, lo que rompió la posibilidad de ciclos cortos de aprendizaje. El episodio 1 les dio una señal clarísima — la audiencia quería contenido sobre integraciones y adopción interna — pero no podían actuar porque ya habían producido todo. Los principios 03 y 06 son inseparables: el proceso mental y los ciclos cortos se necesitan mutuamente.",
     lesson:
-      "La regla para series de contenido: produce 2-3 episodios, lanza, lee los comentarios durante 72 horas, y ajusta los siguientes. La "consistencia" no viene de producir todo de una vez — viene de publicar con ritmo mientras aprendes. Siempre hay que dejar espacio para que el aprendizaje retroalimente el contenido.",
+      "La regla para series de contenido: produce 2-3 episodios, lanza, lee los comentarios durante 72 horas, y ajusta los siguientes. La \"consistencia\" no viene de producir todo de una vez — viene de publicar con ritmo mientras aprendes. Siempre hay que dejar espacio para que el aprendizaje retroalimente el contenido.",
   },
 ];
 

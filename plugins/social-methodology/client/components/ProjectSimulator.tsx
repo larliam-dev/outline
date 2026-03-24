@@ -24,8 +24,8 @@ const stepConfigs: StepConfig[] = [
     placeholder:
       "Ej: Los equipos de contenido no tienen un proceso claro y cada pieza se hace de forma diferente, lo que genera desperdicio y resultados inconsistentes.",
     trap:
-      "Si tu respuesta empieza con "hacer", "crear" o "lanzar"... estás describiendo una solución, no un problema. Vuelve a la pregunta.",
-    hint: "Sé específico. Evita decir "mejorar X" sin explicar qué falla concreta quieres resolver.",
+      "Si tu respuesta empieza con \"hacer\", \"crear\" o \"lanzar\"... estás describiendo una solución, no un problema. Vuelve a la pregunta.",
+    hint: "Sé específico. Evita decir \"mejorar X\" sin explicar qué falla concreta quieres resolver.",
     example:
       "Los equipos de redes sociales trabajan muchas horas pero no tienen un marco común para pensar el contenido. Cada semana improvisan, lo que genera ansiedad y piezas sin hilo conductor.",
   },
@@ -39,7 +39,7 @@ const stepConfigs: StepConfig[] = [
       "Ej: Líderes de contenido de medianas empresas. Consumen newsletters de marketing, siguen referentes en LinkedIn. Les frustra la falta de estructura.",
     trap:
       "Si solo escribiste edad, género o país, tienes demografía, no data. ¿Qué consumen a diario? ¿Qué les preocupa?",
-    hint: "Recuerda: intereses > demografía. No te quedes con "25-35 años, Colombia".",
+    hint: "Recuerda: intereses > demografía. No te quedes con \"25-35 años, Colombia\".",
     example:
       "Coordinadores de contenido de empresas medianas (10-50 personas). Consumen The Hustle, referentes de LinkedIn marketing. Buscan validación de su trabajo. Les preocupa no tener impacto visible.",
   },
@@ -52,7 +52,7 @@ const stepConfigs: StepConfig[] = [
     placeholder:
       "Ej: Sienten que producen mucho pero publican sin norte, lo que les genera ansiedad y sensación de no avanzar.",
     trap:
-      "Si tu tensión suena racional ("no tienen información suficiente"), profundiza: ¿cómo los hace sentir eso? ¿Frustración? ¿Miedo? ¿Vergüenza?",
+      "Si tu tensión suena racional (\"no tienen información suficiente\"), profundiza: ¿cómo los hace sentir eso? ¿Frustración? ¿Miedo? ¿Vergüenza?",
     hint: "La tensión es emocional. ¿Qué les duele, qué les genera alivio, qué les da orgullo?",
     example:
       "Sienten que trabajan mucho y producen poco impacto. Les da vergüenza no poder explicar por qué hicieron una pieza. Quieren sentir que su trabajo tiene sentido y dirección.",
@@ -66,7 +66,7 @@ const stepConfigs: StepConfig[] = [
     placeholder:
       "Ej: Los equipos no necesitan más herramientas, necesitan un lenguaje común para pensar el contenido.",
     trap:
-      "Si cualquiera lo diría sin pensarlo, no es un insight. Prueba la frase: "Parece que X, pero en realidad Y."",
+      "Si cualquiera lo diría sin pensarlo, no es un insight. Prueba la frase: \"Parece que X, pero en realidad Y.\"",
     hint: "Un buen insight es incómodo porque dice algo que todos intuyen pero nadie se atreve a decir.",
     example:
       "Parece que el problema es falta de tiempo, pero en realidad es falta de un proceso. Con el mismo tiempo y un marco claro, producirían el doble con la mitad de angustia.",
@@ -93,7 +93,7 @@ const stepConfigs: StepConfig[] = [
     placeholder:
       "Ej: 1 guía descargable PDF, 8 posts de LinkedIn explicando cada paso, 1 webinar introductorio.",
     trap:
-      "Evita "hacer contenido de valor". Define formato exacto (video, artículo, post), canal y cantidad.",
+      "Evita \"hacer contenido de valor\". Define formato exacto (video, artículo, post), canal y cantidad.",
     hint: "Sé concreto: formato, canal, cantidad. El contenido es la manifestación tangible de tu idea.",
     example:
       "1 herramienta web interactiva con los 8 pasos. 6 posts de LinkedIn con ejemplos de cada principio. 1 sesión de taller de 90 min con el equipo. 1 plantilla descargable para usar en proyectos.",
@@ -121,7 +121,7 @@ const stepConfigs: StepConfig[] = [
     placeholder:
       "Ej: Reviso descargas, comentarios en LinkedIn y respuestas al newsletter en la primera semana. Si la tasa de apertura cae, cambio el asunto.",
     trap:
-      "Si tu métrica es "alcance" o "impresiones", es muy lenta. ¿Qué puedes medir en los primeros 3 días?",
+      "Si tu métrica es \"alcance\" o \"impresiones\", es muy lenta. ¿Qué puedes medir en los primeros 3 días?",
     hint: "No esperes el reporte mensual. Define métricas que puedas revisar en días, no en meses.",
     example:
       "A las 72h reviso: clicks al simulador, comentarios en LinkedIn y respuestas al email. Si el CTR del email es menor al 3%, cambio el asunto. Si los comentarios son genéricos, ajusto el copy de los posts.",

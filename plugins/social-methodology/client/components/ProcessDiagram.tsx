@@ -21,7 +21,7 @@ const steps: Step[] = [
     keyQuestion:
       "¿Puedes describir el problema en una sola oración sin mencionar ninguna solución?",
     trap:
-      "Confundir el problema con la solución. "Necesitamos más contenido" es una solución, no un problema.",
+      "Confundir el problema con la solución. \"Necesitamos más contenido\" es una solución, no un problema.",
   },
   {
     id: "data",
@@ -52,7 +52,7 @@ const steps: Step[] = [
     detail:
       "Formula un hallazgo accionable: una verdad no obvia sobre tu audiencia que abre la puerta a una solución creativa.",
     keyQuestion:
-      "¿Puedes completar esta frase? "Parece que X, pero en realidad Y."",
+      "¿Puedes completar esta frase? \"Parece que X, pero en realidad Y.\"",
     trap:
       "Llamar insight a una observación obvia. Si cualquiera lo diría sin pensarlo, profundiza más.",
   },
